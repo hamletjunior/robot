@@ -62,7 +62,7 @@ void setup() {
 
 	accelCompass.init();
 	accelCompass.enableDefault();
-	accelCompass.writeAccReg(accelCompass.CTRL_REG4_A, 0x30); // Makes the accelerometer works between -8G e +8G
+	accelCompass.writeAccReg(accelCompass.CTRL_REG4_A, 0x30); // Makes the accelerometer works between -8G and +8G
 
 	threadGoForward.onRun(goForward);
 	threadGoForward.setInterval(10);
@@ -155,7 +155,7 @@ void goForward() {
 AccelerometerReading readAccelerometer() {
 	AccelerometerReading reading;
 	accelCompass.read();
-	// According to the accelerometer datasheet, that's the mathematical Hocus Pocus to transform the raw reading in micro Gs.
+	// According to the accelerometer datasheet, that's the mathematical Hocus Pocus to transform the raw reading to micro Gs.
 	reading.x = (int) ((accelCompass.a.x >> 4) * 3.9);
 	reading.y = (int) ((accelCompass.a.y >> 4) * 3.9);
 	reading.z = (int) ((accelCompass.a.z >> 4) * 3.9);
