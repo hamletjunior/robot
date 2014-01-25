@@ -36,7 +36,7 @@ ThreadController lockPreventingController = ThreadController();
 Thread threadLockPreventing = Thread();
 Thread threadCrazyBotMode = Thread();
 
-Fila *accelerationsQueue = new Fila();
+Queue *accelerationsQueue = new Queue();
 
 void setup() {
 	Serial.begin(9600);
@@ -116,13 +116,13 @@ void loop() {
 
 void lockPreventing() {
 	AccelerometerReading accelerometerReading = readAccelerometer();
-	accelerationsQueue->adicionaValor(accelerometerReading.y);
-	if (accelerationsQueue->tamanho() < TAMANHO_MAXIMO_FILA) {
+	accelerationsQueue->addValue(accelerometerReading.y);
+	if (accelerationsQueue->size() < MAX_QUEUE_SIZE) {
 		return;
 	}
 
-	int maximum = accelerationsQueue->maximo();
-	int minimum = accelerationsQueue->minimo();
+	int maximum = accelerationsQueue->maxVal();
+	int minimum = accelerationsQueue->minVal();
 
 	int diference = abs(maximum - minimum);
 	if (diference < 80) { // If the diference between the max and min 15 accelerations is less than 80 micro Gs, than it is stuck somewhere

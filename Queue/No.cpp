@@ -1,15 +1,15 @@
 /*
- * No.cpp
+ * Node.cpp
  *
  *  Created on: 21/01/2014
  *      Author: hamletpessoafariasjunior
  */
 
-#include <Fila/No.h>
+#include <Queue/Node.h>
 #include <stdio.h>
 
-No::No(int valor) {
-	this->proximo = NULL;
-	this->valor = valor;
+Node::Node(int value) {
+	this->next = NULL;
+	this->value = value;
 }
 
