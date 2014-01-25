@@ -4,10 +4,10 @@
 // - extern variable definitions
 // In the appropriate section
 
-#ifndef Robo_H_
-#define Robo_H_
+#ifndef Robot_H_
+#define Robot_H_
 #include "Arduino.h"
-//add your includes for the project Robo here
+//add your includes for the project Robot here
 #include "Servo.h"
 #include "DistanceGP2Y0A21YK.h"
 #include "Thread.h"
@@ -52,4 +52,4 @@ void setup(void);
 
 
 //Do not add code below this line
-#endif /* Robo_H_ */
+#endif /* Robot_H_ */
