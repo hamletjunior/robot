@@ -298,14 +298,8 @@ void spinControl() {
 		gyro.read();
 		lastGyroReadingInstant = millis();
 		float z = gyro.data.z;
-		Serial.print("Lido: ");
-		Serial.print(z);
-		int grausGirados = (int) (abs(z * elapsedTimeSinceLastReading / 1000));
-		Serial.print("Graus Girados: ");
-		Serial.print(grausGirados);
-		angleToSpin -= grausGirados;
-		Serial.print("Angulo a girar: ");
-		Serial.println(angleToSpin);
+		int angleSpun = (int) (abs(z * elapsedTimeSinceLastReading / 1000));
+		angleToSpin -= angleSpun;
 		if (angleToSpin <= 0) {
 			dirtySpinExecution = true;
 			threadSpinControl.enabled = false;

@@ -15,19 +15,19 @@ Queue::Queue() {
 }
 
 void Queue::addValue(int value) {
-	Node *no = new Node(value);
+	Node *node = new Node(value);
 	if (this->first == NULL) {
-		this->first = no;
-		this->last = no;
+		this->first = node;
+		this->last = node;
 	} else {
-		this->last->next = no;
-		this->last = no;
+		this->last->next = node;
+		this->last = node;
 	}
 	if (this->size() > MAX_QUEUE_SIZE) {
-		Node *noTemp = this->first;
+		Node *nodeTemp = this->first;
 		this->first = this->first->next;
-		noTemp->next = NULL;
-		free(noTemp);
+		nodeTemp->next = NULL;
+		free(nodeTemp);
 	}
 }
 
@@ -37,10 +37,10 @@ int Queue::size() {
 	}
 
 	int i = 1;
-	Node *iterador = this->first;
-	while (iterador->next != NULL) {
+	Node *iterator = this->first;
+	while (iterator->next != NULL) {
 		i++;
-		iterador = iterador->next;
+		iterator = iterator->next;
 	}
 	return i;
 }
